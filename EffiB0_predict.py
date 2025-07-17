@@ -49,9 +49,17 @@ if uploaded_file is not None:
 
     # 예측
     predictions = model.predict(img_array)
-    predicted_class = class_names[np.argmax(predictions)]
+    max_index = np.argmax(predictions)
+    predicted_class = class_names[max_index]
+    max_prob = predictions[0][max_index]
 
-    st.markdown(f"### ✅ 예측 결과: **{predicted_class}**")
+    # 출력 조건: 60% 미만이면 예측 실패
+    if max_prob < 0.6:
+        st.markdown(f"### ❌ 예측 실패: 신뢰도 낮음 ({max_prob:.2%})")
+    else:
+        st.markdown(f"### ✅ 예측 결과: **{predicted_class}** ({max_prob:.2%} 확률)")
+
+    # 클래스별 확률 모두 출력
     st.markdown("### 🔢 클래스별 확률")
     for i, prob in enumerate(predictions[0]):
         st.write(f"{class_names[i]}: {prob:.4f}")
