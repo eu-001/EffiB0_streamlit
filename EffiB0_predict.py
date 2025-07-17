@@ -11,9 +11,10 @@ from PIL import Image
 st.title("🐚🥥 EffiB0 이미지 분류기")
 st.write("이 이미지 분류기는 coconut,conch를 분류해주는 분류기입니다.")
 st.image(
-    ["coconut,png","conch.png"],
+    ["coconut.png","conch.png"],
     caption=["코코넛","소라"],
     use_column_width=True
+    width=300
 )
 
 # 모델 및 클래스 불러오기
