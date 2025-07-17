@@ -13,7 +13,7 @@ st.write("이 이미지 분류기는 coconut,conch를 분류해주는 분류기�
 st.image(
     ["coconut.png","conch.png"],
     caption=["코코넛","소라"],
-    use_column_width=True
+    use_column_width=True,
     width=300
 )
 
